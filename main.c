@@ -45,6 +45,8 @@ struct vertex * recursive_search_vertex(struct vertex *vertex, int id, struct ta
 struct vertex * search_vertex(struct vertex *vertex, int id, struct table *table);
 void print_graph(struct vertex *vertex);
 
+void recursive_search_path(struct vertex *vertex, struct table *table, int length);
+void search_path(struct vertex *vertex, struct table *table, int id);
 
 
 bool add_to_table(struct table *table, int data){
@@ -270,10 +272,10 @@ int main(){
 	add_edge(search_vertex(vertex.head, 1, &s_table), search_vertex(vertex.head, 0, &s_table), 1, 8);
 	add_edge(search_vertex(vertex.head, 2, &s_table), search_vertex(vertex.head, 0, &s_table), 6, 5);
 
-	int ss = 1;
-	search_path(vertex.head, &s_table, ss);
+	int start_point = 0;
+	search_path(vertex.head, &s_table, start_point);
 
-	printf("\nShortest path from %d:", ss);
+	printf("\nShortest path from %d:", start_point);
 	for(int i=0;i<4;i++){
 		printf(" %d",search_vertex(vertex.head, i, &s_table)->s_path);
 	}
